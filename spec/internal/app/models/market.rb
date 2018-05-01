@@ -1,2 +1,2 @@
-class Market < ActsAsTaggableOn::Tag
+class Market < ResearchActsAsTaggableOn::Tag
 end

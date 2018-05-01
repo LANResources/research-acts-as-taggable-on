@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [ActsAsTaggableOn](#actsastaggableon)
+- [ResearchActsAsTaggableOn](#researchactsastaggableon)
   - [Installation](#installation)
       - [Post Installation](#post-installation)
       - [For MySql users](#for-mysql-users)
@@ -28,14 +28,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# ActsAsTaggableOn
-
-[![Join the chat at https://gitter.im/mbleigh/acts-as-taggable-on](https://badges.gitter.im/mbleigh/acts-as-taggable-on.svg)](https://gitter.im/mbleigh/acts-as-taggable-on?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Gem Version](https://badge.fury.io/rb/acts-as-taggable-on.svg)](http://badge.fury.io/rb/acts-as-taggable-on)
-[![Build Status](https://secure.travis-ci.org/mbleigh/acts-as-taggable-on.svg)](http://travis-ci.org/mbleigh/acts-as-taggable-on)
-[![Code Climate](https://codeclimate.com/github/mbleigh/acts-as-taggable-on.svg)](https://codeclimate.com/github/mbleigh/acts-as-taggable-on)
-[![Inline docs](http://inch-ci.org/github/mbleigh/acts-as-taggable-on.svg)](http://inch-ci.org/github/mbleigh/acts-as-taggable-on)
-[![Security](https://hakiri.io/github/mbleigh/acts-as-taggable-on/master.svg)](https://hakiri.io/github/mbleigh/acts-as-taggable-on/master)
+# ResearchActsAsTaggableOn
 
 This plugin was originally based on Acts as Taggable on Steroids by Jonathan Viney.
 It has evolved substantially since that point, but all credit goes to him for the
@@ -45,7 +38,7 @@ For instance, in a social network, a user might have tags that are called skills
 interests, sports, and more. There is no real way to differentiate between tags and
 so an implementation of this type is not possible with acts as taggable on steroids.
 
-Enter Acts as Taggable On. Rather than tying functionality to a specific keyword
+Enter Research Acts as Taggable On. Rather than tying functionality to a specific keyword
 (namely `tags`), acts as taggable on allows you to specify an arbitrary number of
 tag "contexts" that can be used locally or in combination in the same way steroids
 was used.
@@ -57,7 +50,7 @@ was used.
 To use it, add it to your Gemfile:
 
 ```ruby
-gem 'acts-as-taggable-on', '~> 4.0'
+gem 'research-acts-as-taggable-on', '~> 5.0'
 ```
 
 and bundle:
@@ -72,7 +65,7 @@ Install migrations
 
 ```shell
 # For the latest versions :
-rake acts_as_taggable_on_engine:install:migrations
+rake research_acts_as_taggable_on_engine:install:migrations
 ```
 
 Review the generated migrations then migrate :
@@ -103,8 +96,8 @@ Setup
 
 ```ruby
 class User < ActiveRecord::Base
-  acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :skills, :interests
+  research_acts_as_taggable # Alias for research_acts_as_taggable_on :tags
+  research_acts_as_taggable_on :skills, :interests
 end
 
 class UsersController < ApplicationController
@@ -153,9 +146,9 @@ remove existing tags so use it with attention.
 @user.save
 @user.reload
 @user.tags
-=> [#<ActsAsTaggableOn::Tag id: 1, name: "awesome", taggings_count: 1>,
- #<ActsAsTaggableOn::Tag id: 2, name: "slick", taggings_count: 1>,
- #<ActsAsTaggableOn::Tag id: 3, name: "hefty", taggings_count: 1>]
+=> [#<ResearchActsAsTaggableOn::Tag id: 1, name: "awesome", taggings_count: 1>,
+ #<ResearchActsAsTaggableOn::Tag id: 2, name: "slick", taggings_count: 1>,
+ #<ResearchActsAsTaggableOn::Tag id: 3, name: "hefty", taggings_count: 1>]
 ```
 
 With the defined context in model, you have multiple new methods at disposal
@@ -168,9 +161,9 @@ these methods are added to the model: `skill_list`(and `skill_list.add`, `skill_
 @user.save
 @user.reload
 @user.skills
-=> [#<ActsAsTaggableOn::Tag id: 1, name: "joking", taggings_count: 1>,
- #<ActsAsTaggableOn::Tag id: 2, name: "clowning", taggings_count: 1>,
- #<ActsAsTaggableOn::Tag id: 3, name: "boxing", taggings_count: 1>]
+=> [#<ResearchActsAsTaggableOn::Tag id: 1, name: "joking", taggings_count: 1>,
+ #<ResearchActsAsTaggableOn::Tag id: 2, name: "clowning", taggings_count: 1>,
+ #<ResearchActsAsTaggableOn::Tag id: 3, name: "boxing", taggings_count: 1>]
 
 @user.skill_list.add("coding")
 
@@ -182,9 +175,9 @@ these methods are added to the model: `skill_list`(and `skill_list.add`, `skill_
 @another_user.save
 
 User.skill_counts
-=> [#<ActsAsTaggableOn::Tag id: 1, name: "joking", taggings_count: 1>,
- #<ActsAsTaggableOn::Tag id: 2, name: "clowning", taggings_count: 2>,
- #<ActsAsTaggableOn::Tag id: 3, name: "boxing", taggings_count: 1>]
+=> [#<ResearchActsAsTaggableOn::Tag id: 1, name: "joking", taggings_count: 1>,
+ #<ResearchActsAsTaggableOn::Tag id: 2, name: "clowning", taggings_count: 2>,
+ #<ResearchActsAsTaggableOn::Tag id: 3, name: "boxing", taggings_count: 1>]
 ```
 
 To preserve the order in which tags are created use `acts_as_ordered_taggable`:
@@ -192,8 +185,8 @@ To preserve the order in which tags are created use `acts_as_ordered_taggable`:
 ```ruby
 class User < ActiveRecord::Base
   # Alias for acts_as_ordered_taggable_on :tags
-  acts_as_ordered_taggable
-  acts_as_ordered_taggable_on :skills, :interests
+  research_acts_as_ordered_taggable
+  research_acts_as_ordered_taggable_on :skills, :interests
 end
 
 @user = User.new(:name => "Bobby")
@@ -212,25 +205,25 @@ end
 You can find the most or least used tags by using:
 
 ```ruby
-ActsAsTaggableOn::Tag.most_used
-ActsAsTaggableOn::Tag.least_used
+ResearchActsAsTaggableOn::Tag.most_used
+ResearchActsAsTaggableOn::Tag.least_used
 ```
 
 You can also filter the results by passing the method a limit, however the default limit is 20.
 
 ```ruby
-ActsAsTaggableOn::Tag.most_used(10)
-ActsAsTaggableOn::Tag.least_used(10)
+ResearchActsAsTaggableOn::Tag.most_used(10)
+ResearchActsAsTaggableOn::Tag.least_used(10)
 ```
 
 ### Finding Tagged Objects
 
-Acts As Taggable On uses scopes to create an association for tags.
+Research Acts As Taggable On uses scopes to create an association for tags.
 This way you can mix and match to filter down your results.
 
 ```ruby
 class User < ActiveRecord::Base
-  acts_as_taggable_on :tags, :skills
+  research_acts_as_taggable_on :tags, :skills
   scope :by_join_date, order("created_at DESC")
 end
 
@@ -297,9 +290,9 @@ User.tagged_with("same", :on => :customs) # => [@user]
 If you want to change how tags are parsed, you can define your own implementation:
 
 ```ruby
-class MyParser < ActsAsTaggableOn::GenericParser
+class MyParser < ResearchActsAsTaggableOn::GenericParser
   def parse
-    ActsAsTaggableOn::TagList.new.tap do |tag_list|
+    ResearchActsAsTaggableOn::TagList.new.tap do |tag_list|
       tag_list.add @tag_list.split('|')
     end
   end
@@ -323,7 +316,7 @@ Now you can use this parser, passing it as parameter:
 Or change it globally:
 
 ```ruby
-ActsAsTaggableOn.default_parser = MyParser
+ResearchActsAsTaggableOn.default_parser = MyParser
 @user = User.new(:name => "Bobby")
 @user.tag_list = "east|south"
 @user.tag_list # => ["east", "south"]
@@ -335,11 +328,11 @@ Tags can have owners:
 
 ```ruby
 class User < ActiveRecord::Base
-  acts_as_tagger
+  research_acts_as_tagger
 end
 
 class Photo < ActiveRecord::Base
-  acts_as_taggable_on :locations
+  research_acts_as_taggable_on :locations
 end
 
 @some_user.tag(@some_photo, :with => "paris, normandy", :on => :locations)
@@ -347,7 +340,7 @@ end
 @some_user.owned_tags
 Photo.tagged_with("paris", :on => :locations, :owned_by => @some_user)
 @some_photo.locations_from(@some_user) # => ["paris", "normandy"]
-@some_photo.owner_tags_on(@some_user, :locations) # => [#<ActsAsTaggableOn::Tag id: 1, name: "paris">...]
+@some_photo.owner_tags_on(@some_user, :locations) # => [#<ResearchActsAsTaggableOn::Tag id: 1, name: "paris">...]
 @some_photo.owner_tags_on(nil, :locations) # => Ownerships equivalent to saying @some_photo.locations
 @some_user.tag(@some_photo, :with => "paris, normandy", :on => :locations, :skip_save => true) #won't save @some_photo object
 ```
@@ -407,7 +400,7 @@ end
 ### Tag cloud calculations
 
 To construct tag clouds, the frequency of each tag needs to be calculated.
-Because we specified `acts_as_taggable_on` on the `User` class, we can
+Because we specified `research_acts_as_taggable_on` on the `User` class, we can
 get a calculation of all the tag counts by using `User.tag_counts_on(:customs)`. But what if we wanted a tag count for
 a single user's posts? To achieve this we call tag_counts on the association:
 
@@ -423,7 +416,7 @@ Helper:
 
 ```ruby
 module PostsHelper
-  include ActsAsTaggableOn::TagsHelper
+  include ResearchActsAsTaggableOn::TagsHelper
 end
 ```
 
@@ -459,37 +452,37 @@ CSS:
 If you would like to remove unused tag objects after removing taggings, add:
 
 ```ruby
-ActsAsTaggableOn.remove_unused_tags = true
+ResearchActsAsTaggableOn.remove_unused_tags = true
 ```
 
 If you want force tags to be saved downcased:
 
 ```ruby
-ActsAsTaggableOn.force_lowercase = true
+ResearchActsAsTaggableOn.force_lowercase = true
 ```
 
 If you want tags to be saved parametrized (you can redefine to_param as well):
 
 ```ruby
-ActsAsTaggableOn.force_parameterize = true
+ResearchActsAsTaggableOn.force_parameterize = true
 ```
 
 If you would like tags to be case-sensitive and not use LIKE queries for creation:
 
 ```ruby
-ActsAsTaggableOn.strict_case_match = true
+ResearchActsAsTaggableOn.strict_case_match = true
 ```
 
 If you would like to have an exact match covering special characters with MySql:
 
 ```ruby
-ActsAsTaggableOn.force_binary_collation = true
+ResearchActsAsTaggableOn.force_binary_collation = true
 ```
 
 If you want to change the default delimiter (it defaults to ','). You can also pass in an array of delimiters such as ([',', '|']):
 
 ```ruby
-ActsAsTaggableOn.delimiter = ','
+ResearchActsAsTaggableOn.delimiter = ','
 ```
 
 *NOTE 1: SQLite by default can't upcase or downcase multibyte characters, resulting in unwanted behavior. Load the SQLite ICU extension for proper handle of such characters. [See docs](http://www.sqlite.org/src/artifact?ci=trunk&filename=ext/icu/README.txt)*
@@ -509,7 +502,7 @@ see [UPGRADING](UPGRADING.md)
 
 ## Contributors
 
-We have a long list of valued contributors. [Check them all](https://github.com/mbleigh/acts-as-taggable-on/contributors)
+We have a long list of valued contributors. [Check them all](https://github.com/LANResources/research-acts-as-taggable-on/contributors)
 
 ## Compatibility
 
@@ -521,7 +514,7 @@ Versions >= 3.x are compatible with Ruby 1.9.3+ and Rails 3 and 4.
 
 Versions >= 4.x are compatible with Ruby 2.0.0+ and Rails 4 and 5.
 
-For an up-to-date roadmap, see https://github.com/mbleigh/acts-as-taggable-on/milestones
+For an up-to-date roadmap, see https://github.com/LANResources/research-acts-as-taggable-on/milestones
 
 ## TODO
 
@@ -530,7 +523,7 @@ For an up-to-date roadmap, see https://github.com/mbleigh/acts-as-taggable-on/mi
 
 ## Testing
 
-Acts As Taggable On uses RSpec for its test coverage. Inside the gem
+Research Acts As Taggable On uses RSpec for its test coverage. Inside the gem
 directory, you can run the specs with:
 
 ```shell
@@ -543,4 +536,4 @@ You can run all the tests across all the Rails versions by running `rake apprais
 
 ## License
 
-See [LICENSE](https://github.com/mbleigh/acts-as-taggable-on/blob/master/LICENSE.md)
+See [LICENSE](https://github.com/LANResources/research-acts-as-taggable-on/blob/master/LICENSE.md)

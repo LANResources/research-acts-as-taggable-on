@@ -3,7 +3,7 @@ if ActiveRecord.gem_version >= Gem::Version.new('5.0')
 else
   class ActsAsTaggableOnMigration < ActiveRecord::Migration; end
 end
-ActsAsTaggableOnMigration.class_eval do
+ResearchActsAsTaggableOnMigration.class_eval do
   def self.up
     create_table :tags do |t|
       t.string :name

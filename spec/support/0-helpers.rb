@@ -1,5 +1,5 @@
 def using_sqlite?
-  ActsAsTaggableOn::Utils.connection && ActsAsTaggableOn::Utils.connection.adapter_name == 'SQLite'
+  ResearchActsAsTaggableOn::Utils.connection && ResearchActsAsTaggableOn::Utils.connection.adapter_name == 'SQLite'
 end
 
 def supports_concurrency?
@@ -7,12 +7,12 @@ def supports_concurrency?
 end
 
 def using_postgresql?
-  ActsAsTaggableOn::Utils.using_postgresql?
+  ResearchActsAsTaggableOn::Utils.using_postgresql?
 end
 
 def postgresql_version
   if using_postgresql?
-    ActsAsTaggableOn::Utils.connection.execute('SHOW SERVER_VERSION').first['server_version'].to_f
+    ResearchActsAsTaggableOn::Utils.connection.execute('SHOW SERVER_VERSION').first['server_version'].to_f
   else
     0.0
   end
@@ -24,9 +24,9 @@ end
 
 
 def using_mysql?
-  ActsAsTaggableOn::Utils.using_mysql?
+  ResearchActsAsTaggableOn::Utils.using_mysql?
 end
 
 def using_case_insensitive_collation?
-  using_mysql? && ActsAsTaggableOn::Utils.connection.collation =~ /_ci\Z/
+  using_mysql? && ResearchActsAsTaggableOn::Utils.connection.collation =~ /_ci\Z/
 end

@@ -1,8 +1,8 @@
 class TaggableModel < ActiveRecord::Base
-  acts_as_taggable
-  acts_as_taggable_on :languages
-  acts_as_taggable_on :skills
-  acts_as_taggable_on :needs, :offerings
+  research_acts_as_taggable
+  research_acts_as_taggable_on :languages
+  research_acts_as_taggable_on :skills
+  research_acts_as_taggable_on :needs, :offerings
   has_many :untaggable_models
 
   attr_reader :tag_list_submethod_called
@@ -14,30 +14,30 @@ class TaggableModel < ActiveRecord::Base
 end
 
 class CachedModel < ActiveRecord::Base
-  acts_as_taggable
+  research_acts_as_taggable
 end
 
 class OtherCachedModel < ActiveRecord::Base
-  acts_as_taggable_on :languages, :statuses, :glasses
+  research_acts_as_taggable_on :languages, :statuses, :glasses
 end
 
 class OtherTaggableModel < ActiveRecord::Base
-  acts_as_taggable_on :tags, :languages
-  acts_as_taggable_on :needs, :offerings
+  research_acts_as_taggable_on :tags, :languages
+  research_acts_as_taggable_on :needs, :offerings
 end
 
 class InheritingTaggableModel < TaggableModel
 end
 
 class AlteredInheritingTaggableModel < TaggableModel
-  acts_as_taggable_on :parts
+  research_acts_as_taggable_on :parts
 end
 
-class Market < ActsAsTaggableOn::Tag
+class Market < ResearchActsAsTaggableOn::Tag
 end
 
 class Company < ActiveRecord::Base
-  acts_as_taggable_on :locations, :markets
+  research_acts_as_taggable_on :locations, :markets
 
   has_many :markets, :through => :market_taggings, :source => :tag
 
@@ -53,7 +53,7 @@ class Company < ActiveRecord::Base
 end
 
 class User < ActiveRecord::Base
-  acts_as_tagger
+  research_acts_as_tagger
 end
 
 class Student < User
@@ -65,26 +65,26 @@ end
 
 class NonStandardIdTaggableModel < ActiveRecord::Base
   self.primary_key = :an_id
-  acts_as_taggable
-  acts_as_taggable_on :languages
-  acts_as_taggable_on :skills
-  acts_as_taggable_on :needs, :offerings
+  research_acts_as_taggable
+  research_acts_as_taggable_on :languages
+  research_acts_as_taggable_on :skills
+  research_acts_as_taggable_on :needs, :offerings
   has_many :untaggable_models
 end
 
 class OrderedTaggableModel < ActiveRecord::Base
-  acts_as_ordered_taggable
-  acts_as_ordered_taggable_on :colours
+  research_acts_as_ordered_taggable
+  research_acts_as_ordered_taggable_on :colours
 end
 
 if using_postgresql?
   class CachedModelWithArray < ActiveRecord::Base
-    acts_as_taggable
+    research_acts_as_taggable
   end
   if postgresql_support_json?
     class TaggableModelWithJson < ActiveRecord::Base
-      acts_as_taggable
-      acts_as_taggable_on :skills
+      research_acts_as_taggable
+      research_acts_as_taggable_on :skills
     end
   end
 end

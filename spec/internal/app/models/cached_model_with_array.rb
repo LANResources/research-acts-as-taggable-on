@@ -1,5 +1,5 @@
 if using_postgresql?
   class CachedModelWithArray < ActiveRecord::Base
-    acts_as_taggable
+    research_acts_as_taggable
   end
 end

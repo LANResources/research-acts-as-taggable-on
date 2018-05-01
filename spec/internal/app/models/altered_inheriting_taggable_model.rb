@@ -1,3 +1,3 @@
 class AlteredInheritingTaggableModel < TaggableModel
-  acts_as_taggable_on :parts
+  research_acts_as_taggable_on :parts
 end
