@@ -1,4 +1,4 @@
 class OrderedTaggableModel < ActiveRecord::Base
-  acts_as_ordered_taggable
-  acts_as_ordered_taggable_on :colours
+  research_acts_as_ordered_taggable
+  research_acts_as_ordered_taggable_on :colours
 end

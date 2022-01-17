@@ -143,7 +143,7 @@ As such, _Breaking Changes_ are major. _Features_ would map to either major or m
 
 * Documentation
   * [@logicminds Adds table of contents using doctoc utility](https://github.com/mbleigh/acts-as-taggable-on/pull/803)
-  * [@jamesprior Changing ActsAsTaggable to ActsAsTaggableOn](https://github.com/mbleigh/acts-as-taggable-on/pull/637)
+  * [@jamesprior Changing ActsAsTaggable to ResearchActsAsTaggableOn](https://github.com/mbleigh/acts-as-taggable-on/pull/637)
   * [@markgandolfo Update README.md](https://github.com/mbleigh/acts-as-taggable-on/pull/645))
   * [@snowblink Update release date for 3.5.0](https://github.com/mbleigh/acts-as-taggable-on/pull/647)
   * [@AlexVPopov Update README.md](https://github.com/mbleigh/acts-as-taggable-on/pull/671)
@@ -197,7 +197,7 @@ As such, _Breaking Changes_ are major. _Features_ would map to either major or m
   * [@felipeclopes #488 Support for `start_at` and `end_at` restrictions when selecting tags](https://github.com/mbleigh/acts-as-taggable-on/pull/488)
 
 * Fixes
-  * [@tonytonyjan #560 Fix for `ActsAsTaggableOn.remove_unused_tags` doesn't work](https://github.com/mbleigh/acts-as-taggable-on/pull/560)
+  * [@tonytonyjan #560 Fix for `ResearchActsAsTaggableOn.remove_unused_tags` doesn't work](https://github.com/mbleigh/acts-as-taggable-on/pull/560)
   * [@TheLarkInn #555 Fix for `tag_cloud` helper to generate correct css tags](https://github.com/mbleigh/acts-as-taggable-on/pull/555)
 
 * Performance
@@ -226,7 +226,7 @@ As such, _Breaking Changes_ are major. _Features_ would map to either major or m
   * [@seuros #545 Remove `ammeter` development dependency](https://github.com/mbleigh/acts-as-taggable-on/pull/545)
   * [@seuros #545 Deprecate `TagList.from` in favor of `TagListParser.parse`](https://github.com/mbleigh/acts-as-taggable-on/pull/545)
   * [@seuros #543 Introduce lazy loading](https://github.com/mbleigh/acts-as-taggable-on/pull/543)
-  * [@seuros #541 Deprecate ActsAsTaggableOn::Utils](https://github.com/mbleigh/acts-as-taggable-on/pull/541)
+  * [@seuros #541 Deprecate ResearchActsAsTaggableOn::Utils](https://github.com/mbleigh/acts-as-taggable-on/pull/541)
 
 ### [3.2.3 / 2014-05-16](https://github.com/mbleigh/acts-as-taggable-on/compare/v3.2.2...v3.2.3)
 
@@ -237,7 +237,7 @@ As such, _Breaking Changes_ are major. _Features_ would map to either major or m
 ### [3.2.2 / 2014-05-07](https://github.com/mbleigh/acts-as-taggable-on/compare/v3.2.1...v3.2.2)
 
 * Breaking Changes
-  * [@seuros #526 Taggable models are not extended with ActsAsTaggableOn::Utils anymore](https://github.com/mbleigh/acts-as-taggable-on/pull/526)
+  * [@seuros #526 Taggable models are not extended with ResearchActsAsTaggableOn::Utils anymore](https://github.com/mbleigh/acts-as-taggable-on/pull/526)
 
 * Fixes
   * [@seuros #536 Add explicit conversion of tags to strings (when assigning tags)](https://github.com/mbleigh/acts-as-taggable-on/pull/536)
@@ -257,7 +257,7 @@ As such, _Breaking Changes_ are major. _Features_ would map to either major or m
 ### [3.2.0 / 2014-05-01](https://github.com/mbleigh/acts-as-taggable-on/compare/v3.1.1...v3.2.0)
 
 * Breaking Changes
-  * ActsAsTaggableOn::Tag is not extend with ActsAsTaggableOn::Utils anymore
+  * ResearchActsAsTaggableOn::Tag is not extend with ResearchActsAsTaggableOn::Utils anymore
 
 * Features
   * [@ches #413 Hook to support STI subclasses of Tag in save_tags](https://github.com/mbleigh/acts-as-taggable-on/pull/413)

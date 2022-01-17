@@ -1,9 +1,9 @@
 class TaggableModel < ActiveRecord::Base
-  acts_as_taggable
-  acts_as_taggable_on :languages
-  acts_as_taggable_on :skills
-  acts_as_taggable_on :needs, :offerings
-  acts_as_taggable_tenant :tenant_id
+  research_acts_as_taggable
+  research_acts_as_taggable_on :languages
+  research_acts_as_taggable_on :skills
+  research_acts_as_taggable_on :needs, :offerings
+  research_acts_as_taggable_tenant :tenant_id
 
   has_many :untaggable_models
 
